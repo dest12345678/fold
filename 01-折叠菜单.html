@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			
+			}
+			body {
+				font-size: 14px;
+			}
+			ul,li {
+				list-style-type: none;
+			}
+			#menu {
+				width: 200px;
+				margin: 20px,auto;
+				border: 1px solid #0cc;
+				
+			}
+			#menu p {
+				background: #eee;
+				line-height: 26px;
+				padding-left: 10px;
+				font-weight: bold;
+				cursor: pointer;
+				border-bottom: 1px solid #ccc;
+				
+			}
+			#menu ul {
+				display:none;
+			}
+			#menu ul li {
+				line-height: 24px;
+				padding-left: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="menu">
+			<div>
+				<p>Web前端</p>
+				<ul>
+					<li>html</li>
+					<li>css</li>
+					<li>javascript</li>
+					<li>less</li>
+					<li>sass</li>
+				</ul>
+			</div>
+			<div>
+				<p>后台开发</p>
+				<ul>
+					<li>java</li>
+					<li>php</li>
+					<li>python</li>
+					<li>asp</li>
+					<li>nodejs</li>
+				</ul>
+			</div>
+			<div>
+				<p>数据库开发</p>
+				<ul>
+					<li>mysql</li>
+					<li>oracle</li>
+					<li>sql server</li>
+					<li>db2</li>
+					<li>redis</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			window.onload = function(){
+				//获得折叠菜单容器对象
+				var menu = document.getElementById('menu');
+				
+				//获得所有标题对象
+				var ps = menu.getElementsByTagName('p');
+				
+				//获得所有内容对象
+				var uls = menu.getElementsByTagName('ul');
+				
+				//遍历标题元素
+				for(var i = 0;i < ps.length;i ++){
+					//设置p的自定义属性
+					ps[i].setAttribute('pid',i);
+					
+					//循环注册p标题的单击事件
+					ps[i].onclick = function(){
+						
+						//取出当前标题的pid属性值
+						var pid = this.getAttribute('pid');
+						
+						//动态显示隐藏对应下标的ul
+						if(uls[pid].style.display == 'block'){
+							uls[pid].style.display = 'none';
+						} else {
+							uls[pid].style.display = 'block';
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
